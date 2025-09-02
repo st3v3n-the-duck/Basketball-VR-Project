@@ -1,5 +1,4 @@
 using System.Linq;
-
 using UnityEditor;
 using UnityEditor.Build;
 using UnityEditor.Build.Reporting;
@@ -30,7 +29,7 @@ namespace Samples
         /// <summary>Override of <see cref="IPreprocessBuildWithReport"/> and <see cref="IPostprocessBuildWithReport"/></summary>
         public int callbackOrder
         {
-            get { return 0;  }
+            get { return 0; }
         }
 
         void CleanOldSettings()
@@ -39,7 +38,8 @@ namespace Samples
             if (preloadedAssets == null)
                 return;
 
-            var oldSettings = from s in preloadedAssets
+            var oldSettings =
+                from s in preloadedAssets
                 where s != null && s.GetType() == typeof(SampleSettings)
                 select s;
 

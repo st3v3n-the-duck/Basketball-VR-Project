@@ -57,7 +57,9 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.ARStarterAssets
         }
 
         [SerializeField]
-        [Tooltip("Whether to require that the AR Interactor hits an AR Plane with a horizontal up alignment in order to spawn anything.")]
+        [Tooltip(
+            "Whether to require that the AR Interactor hits an AR Plane with a horizontal up alignment in order to spawn anything."
+        )]
         bool m_RequireHorizontalUpSurface;
 
         /// <summary>
@@ -71,8 +73,10 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.ARStarterAssets
         }
 
         [SerializeField]
-        [Tooltip("The type of trigger to use to spawn an object, either when the Interactor's select action occurs or " +
-            "when a button input is performed.")]
+        [Tooltip(
+            "The type of trigger to use to spawn an object, either when the Interactor's select action occurs or "
+                + "when a button input is performed."
+        )]
         SpawnTriggerType m_SpawnTriggerType;
 
         /// <summary>
@@ -165,13 +169,20 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.ARStarterAssets
                     return;
 
                 // Don't spawn the object if the tap was over screen space UI.
-                var isPointerOverUI = EventSystem.current != null && EventSystem.current.IsPointerOverGameObject(-1);
-                if (!isPointerOverUI && m_ARInteractor.TryGetCurrentARRaycastHit(out var arRaycastHit))
+                var isPointerOverUI =
+                    EventSystem.current != null && EventSystem.current.IsPointerOverGameObject(-1);
+                if (
+                    !isPointerOverUI
+                    && m_ARInteractor.TryGetCurrentARRaycastHit(out var arRaycastHit)
+                )
                 {
                     if (!(arRaycastHit.trackable is ARPlane arPlane))
                         return;
 
-                    if (m_RequireHorizontalUpSurface && arPlane.alignment != PlaneAlignment.HorizontalUp)
+                    if (
+                        m_RequireHorizontalUpSurface
+                        && arPlane.alignment != PlaneAlignment.HorizontalUp
+                    )
                         return;
 
                     m_ObjectSpawner.TrySpawnObject(arRaycastHit.pose.position, arPlane.normal);

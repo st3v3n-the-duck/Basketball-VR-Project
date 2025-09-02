@@ -1,8 +1,6 @@
 using System;
-
 using UnityEditor;
 using UnityEditor.XR.Management;
-
 using UnityEngine;
 
 namespace Samples
@@ -14,17 +12,22 @@ namespace Samples
     [XRCustomLoaderUI("Samples.SampleLoader", BuildTargetGroup.Standalone)]
     public class SampleStandaloneLoaderUI : IXRCustomLoaderUI
     {
-        static readonly string[] features = new string[]{
+        static readonly string[] features = new string[]
+        {
             "Feature One",
             "Feature Two",
-            "Feature Three"
+            "Feature Three",
         };
 
         struct Content
         {
-            public static readonly GUIContent k_LoaderName = new GUIContent("Sample Loader One Custom <SAMPLE ONLY YOU MUST REIMPLEMENT>");
+            public static readonly GUIContent k_LoaderName = new GUIContent(
+                "Sample Loader One Custom <SAMPLE ONLY YOU MUST REIMPLEMENT>"
+            );
             public static readonly GUIContent k_Download = new GUIContent("Download");
-            public static readonly GUIContent k_WarningIcon = EditorGUIUtility.IconContent("console.warnicon.sml");
+            public static readonly GUIContent k_WarningIcon = EditorGUIUtility.IconContent(
+                "console.warnicon.sml"
+            );
         }
 
         float renderLineHeight = 0;
@@ -33,7 +36,8 @@ namespace Samples
         public bool IsLoaderEnabled { get; set; }
 
         /// <inheritdoc />
-        public string[] IncompatibleLoaders => new string[] { "UnityEngine.XR.WindowsMR.WindowsMRLoader" };
+        public string[] IncompatibleLoaders =>
+            new string[] { "UnityEngine.XR.WindowsMR.WindowsMRLoader" };
 
         /// <inheritdoc />
         public float RequiredRenderHeight { get; private set; }
@@ -60,7 +64,11 @@ namespace Samples
             var labelRect = new Rect(rect);
             labelRect.width = size.x;
             labelRect.height = renderLineHeight;
-            IsLoaderEnabled = EditorGUI.ToggleLeft(labelRect, Content.k_LoaderName, IsLoaderEnabled);
+            IsLoaderEnabled = EditorGUI.ToggleLeft(
+                labelRect,
+                Content.k_LoaderName,
+                IsLoaderEnabled
+            );
 
             // The following shows how to make draw an icon with a tooltip
             size = EditorStyles.label.CalcSize(Content.k_WarningIcon);
@@ -68,7 +76,11 @@ namespace Samples
             imageRect.xMin = labelRect.xMax + 1;
             imageRect.width = size.y;
             imageRect.height = renderLineHeight;
-            var iconWithTooltip = new GUIContent("", Content.k_WarningIcon.image, "Warning: This is a sample to show how to draw a custom icon with a tooltip!");
+            var iconWithTooltip = new GUIContent(
+                "",
+                Content.k_WarningIcon.image,
+                "Warning: This is a sample to show how to draw a custom icon with a tooltip!"
+            );
             EditorGUI.LabelField(imageRect, iconWithTooltip);
 
             if (IsLoaderEnabled)

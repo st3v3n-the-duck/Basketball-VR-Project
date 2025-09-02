@@ -29,19 +29,18 @@ public class Ball : MonoBehaviour
         }
     }
 
-
     private void OnCollisionEnter(Collision collision)
     {
-        
-
         if (collision.gameObject.CompareTag("Ground"))
         {
             scoreTrigger.isValid = false;
-            var volumeDependantOnVelocity = Mathf.Clamp01(collision.relativeVelocity.magnitude / 20*2);
-            Bouncing.PlayOneShot(BouncingSoundEffect[Random.Range(0,BouncingSoundEffect.Length)], volumeDependantOnVelocity);
-
+            var volumeDependantOnVelocity = Mathf.Clamp01(
+                collision.relativeVelocity.magnitude / 20 * 2
+            );
+            Bouncing.PlayOneShot(
+                BouncingSoundEffect[Random.Range(0, BouncingSoundEffect.Length)],
+                volumeDependantOnVelocity
+            );
         }
-     
-        
     }
 }

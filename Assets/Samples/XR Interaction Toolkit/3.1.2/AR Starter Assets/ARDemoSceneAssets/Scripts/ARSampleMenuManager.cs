@@ -107,7 +107,9 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.ARStarterAssets
         }
 
         [SerializeField]
-        XRInputValueReader<Vector2> m_TapStartPositionInput = new XRInputValueReader<Vector2>("Tap Start Position");
+        XRInputValueReader<Vector2> m_TapStartPositionInput = new XRInputValueReader<Vector2>(
+            "Tap Start Position"
+        );
 
         /// <summary>
         /// Input to use for the screen tap start position.
@@ -149,7 +151,8 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.ARStarterAssets
             {
                 m_CreateButton.gameObject.SetActive(false);
                 m_DeleteButton.gameObject.SetActive(false);
-                var isPointerOverUI = EventSystem.current != null && EventSystem.current.IsPointerOverGameObject(-1);
+                var isPointerOverUI =
+                    EventSystem.current != null && EventSystem.current.IsPointerOverGameObject(-1);
                 if (!isPointerOverUI && m_TapStartPositionInput.TryReadValue(out _))
                 {
                     HideMenu();
@@ -158,12 +161,18 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.ARStarterAssets
             else if (m_InteractionGroup is not null)
             {
                 var currentFocusedObject = m_InteractionGroup.focusInteractable;
-                if (currentFocusedObject != null && (!m_DeleteButton.isActiveAndEnabled || m_CreateButton.isActiveAndEnabled))
+                if (
+                    currentFocusedObject != null
+                    && (!m_DeleteButton.isActiveAndEnabled || m_CreateButton.isActiveAndEnabled)
+                )
                 {
                     m_CreateButton.gameObject.SetActive(false);
                     m_DeleteButton.gameObject.SetActive(true);
                 }
-                else if (currentFocusedObject == null && (!m_CreateButton.isActiveAndEnabled || m_DeleteButton.isActiveAndEnabled))
+                else if (
+                    currentFocusedObject == null
+                    && (!m_CreateButton.isActiveAndEnabled || m_DeleteButton.isActiveAndEnabled)
+                )
                 {
                     m_CreateButton.gameObject.SetActive(true);
                     m_DeleteButton.gameObject.SetActive(false);
@@ -175,7 +184,10 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.ARStarterAssets
         {
             if (m_ObjectSpawner == null)
             {
-                Debug.LogWarning("Menu Manager not configured correctly: no Object Spawner set.", this);
+                Debug.LogWarning(
+                    "Menu Manager not configured correctly: no Object Spawner set.",
+                    this
+                );
             }
             else
             {
@@ -185,7 +197,10 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.ARStarterAssets
                 }
                 else
                 {
-                    Debug.LogWarning("Object Spawner not configured correctly: object index larger than number of Object Prefabs.", this);
+                    Debug.LogWarning(
+                        "Object Spawner not configured correctly: object index larger than number of Object Prefabs.",
+                        this
+                    );
                 }
             }
 

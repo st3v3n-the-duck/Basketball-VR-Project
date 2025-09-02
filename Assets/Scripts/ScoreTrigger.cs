@@ -9,18 +9,16 @@ public class ScoreTrigger : MonoBehaviour
     public AudioSource SuccessfulScore;
     public AudioClip SuccessfulSoundEffect;
 
-    [SerializeField] private int Score = 0;
-
+    [SerializeField]
+    private int Score = 0;
 
     public bool isValid = true;
 
     public PlayerPosition playerPosition;
 
-
     private void Awake()
     {
         scoreDisplay = FindAnyObjectByType<ScoreDisplay>();
-
     }
 
     public void Hoop_Correct()
@@ -39,11 +37,8 @@ public class ScoreTrigger : MonoBehaviour
 
     private void AddPoint()
     {
-        Score+=playerPosition.Zone;
+        Score += playerPosition.Zone;
         scoreDisplay.ScoreUpdate(HoopNumber, Score);
         SuccessfulScore.PlayOneShot(SuccessfulSoundEffect);
     }
 }
-
-
-

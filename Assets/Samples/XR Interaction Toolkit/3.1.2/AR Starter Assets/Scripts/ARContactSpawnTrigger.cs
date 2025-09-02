@@ -25,7 +25,9 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.ARStarterAssets
         }
 
         [SerializeField]
-        [Tooltip("Whether to require that the AR Plane has an alignment of horizontal up to spawn on it.")]
+        [Tooltip(
+            "Whether to require that the AR Plane has an alignment of horizontal up to spawn on it."
+        )]
         bool m_RequireHorizontalUpSurface;
 
         /// <summary>
@@ -71,7 +73,11 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.ARStarterAssets
         /// <param name="surfaceNormal">The potential normal of the spawn surface.</param>
         /// <returns>Returns <see langword="true"/> if <paramref name="objectCollider"/> is a valid spawn surface,
         /// otherwise returns <see langword="false"/>.</returns>
-        public bool TryGetSpawnSurfaceData(Collider objectCollider, out Vector3 surfacePosition, out Vector3 surfaceNormal)
+        public bool TryGetSpawnSurfaceData(
+            Collider objectCollider,
+            out Vector3 surfacePosition,
+            out Vector3 surfaceNormal
+        )
         {
             surfacePosition = default;
             surfaceNormal = default;

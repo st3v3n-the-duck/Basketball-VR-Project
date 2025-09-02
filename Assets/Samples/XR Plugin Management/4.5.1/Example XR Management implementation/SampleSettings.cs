@@ -10,21 +10,23 @@ namespace Samples
     [System.Serializable]
     public class SampleSettings : ScriptableObject
     {
-        #if !UNITY_EDITOR
+#if !UNITY_EDITOR
         /// <summary>Static instance that will hold the runtime asset instance we created in our build process.</summary>
         /// <see cref="SampleBuildProcessor"/>
         public static SampleSettings s_RuntimeInstance = null;
-        #endif
+#endif
 
         /// <summary>Requirement settings enumeration</summary>
         public enum Requirement
         {
             /// <summary>Required</summary>
             Required,
+
             /// <summary>Optional</summary>
             Optional,
+
             /// <summary>None</summary>
-            None
+            None,
         }
 
         [SerializeField, Tooltip("Changes item requirement.")]
@@ -49,9 +51,9 @@ namespace Samples
 
         void Awake()
         {
-            #if !UNITY_EDITOR
+#if !UNITY_EDITOR
             s_RuntimeInstance = this;
-            #endif
+#endif
         }
     }
 }

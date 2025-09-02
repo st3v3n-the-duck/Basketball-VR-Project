@@ -2,9 +2,6 @@ using UnityEngine;
 
 public class PlayerPosition : MonoBehaviour
 {
-
-
-  
     public int Zone = 3;
     private int _currentZone = 3;
 
@@ -16,7 +13,7 @@ public class PlayerPosition : MonoBehaviour
         }
     }
 
-   private void OnTriggerExit(Collider other)
+    private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Zone"))
         {
@@ -30,25 +27,22 @@ public class PlayerPosition : MonoBehaviour
                 _currentZone = 3;
                 return;
             }
-
         }
     }
-   
+
     private void Update()
     {
         Debug.Log("Current Zone: " + _currentZone);
     }
+
     private void Awake()
     {
         Zone = 3;
-        _currentZone= 3;
+        _currentZone = 3;
     }
 
     public void BallRelease()
     {
         Zone = _currentZone;
     }
-
-
-
 }

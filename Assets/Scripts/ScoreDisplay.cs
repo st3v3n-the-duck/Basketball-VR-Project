@@ -4,7 +4,7 @@ using UnityEngine;
 public class ScoreDisplay : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    
+
     public TMP_Text Score1;
 
     public TMP_Text Score2;
@@ -19,18 +19,13 @@ public class ScoreDisplay : MonoBehaviour
     {
         switch (hoop)
         {
-             case 1:
+            case 1:
                 Score1.text = score.ToString();
                 break;
 
-             case 2:
+            case 2:
                 Score2.text = score.ToString();
                 break;
         }
     }
-
-
-
-
-
 }

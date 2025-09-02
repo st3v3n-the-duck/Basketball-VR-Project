@@ -2,11 +2,9 @@ using UnityEngine;
 
 public class HoopTrigger : MonoBehaviour
 {
-
     public bool isCorrectHoop;
 
     public ScoreTrigger scoreTrigger;
-
 
     private void OnTriggerEnter(Collider other)
     {

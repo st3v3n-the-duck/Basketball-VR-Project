@@ -1,8 +1,6 @@
 using System.Collections.Generic;
-
 using UnityEngine.XR;
 using UnityEngine.XR.Management;
-
 #if UNITY_EDITOR
 using UnityEditor;
 using UnityEditor.XR.Management;
@@ -16,7 +14,10 @@ namespace Samples
     /// XRManager.
     /// </summary>
 #if UNITY_EDITOR
-    [XRSupportedBuildTarget(BuildTargetGroup.Standalone, new BuildTarget[]{ BuildTarget.StandaloneWindows, BuildTarget.StandaloneWindows64})]
+    [XRSupportedBuildTarget(
+        BuildTargetGroup.Standalone,
+        new BuildTarget[] { BuildTarget.StandaloneWindows, BuildTarget.StandaloneWindows64 }
+    )]
     [XRSupportedBuildTarget(BuildTargetGroup.Android)]
 #endif
     public class SampleLoader : XRLoaderHelper
@@ -36,14 +37,17 @@ namespace Samples
             // When running in the Unity Editor, we have to load user's customization of configuration data directly from
             // EditorBuildSettings. At runtime, we need to grab it from the static instance field instead.
 #if UNITY_EDITOR
-            UnityEditor.EditorBuildSettings.TryGetConfigObject(SampleConstants.k_SettingsKey, out settings);
+            UnityEditor.EditorBuildSettings.TryGetConfigObject(
+                SampleConstants.k_SettingsKey,
+                out settings
+            );
 #else
             settings = SampleSettings.s_RuntimeInstance;
 #endif
             return settings;
         }
 
-#region XRLoader API Implementation
+        #region XRLoader API Implementation
 
         /// <summary>Implementaion of <see cref="XRLoader.Initialize"/></summary>
         /// <returns>True if successful, false otherwise</returns>
@@ -55,7 +59,10 @@ namespace Samples
                 // TODO: Pass settings off to plugin prior to subsystem init.
             }
 
-            CreateSubsystem<XRInputSubsystemDescriptor, XRInputSubsystem>(s_InputSubsystemDescriptors, "InputSubsystemDescriptor");
+            CreateSubsystem<XRInputSubsystemDescriptor, XRInputSubsystem>(
+                s_InputSubsystemDescriptors,
+                "InputSubsystemDescriptor"
+            );
 
             return false;
         }
@@ -84,6 +91,6 @@ namespace Samples
             return base.Deinitialize();
         }
 
-#endregion
+        #endregion
     }
 }

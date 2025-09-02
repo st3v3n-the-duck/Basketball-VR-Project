@@ -1,5 +1,4 @@
 using UnityEditor;
-
 using UnityEngine;
 
 namespace Samples
@@ -12,7 +11,7 @@ namespace Samples
     public class SampleSettingsEditor : Editor
     {
         static string k_RequiresProperty = "m_RequiresItem";
-        static string k_RuntimeToggleProperty  = "m_RuntimeToggle";
+        static string k_RuntimeToggleProperty = "m_RuntimeToggle";
 
         static GUIContent k_ShowBuildSettingsLabel = new GUIContent("Build Settings");
         static GUIContent k_RequiresLabel = new GUIContent("Item Requirement");
@@ -32,11 +31,16 @@ namespace Samples
             if (serializedObject == null || serializedObject.targetObject == null)
                 return;
 
-            if (m_RequiesItemProperty == null) m_RequiesItemProperty = serializedObject.FindProperty(k_RequiresProperty);
-            if (m_RuntimeToggleProperty == null) m_RuntimeToggleProperty = serializedObject.FindProperty(k_RuntimeToggleProperty);
+            if (m_RequiesItemProperty == null)
+                m_RequiesItemProperty = serializedObject.FindProperty(k_RequiresProperty);
+            if (m_RuntimeToggleProperty == null)
+                m_RuntimeToggleProperty = serializedObject.FindProperty(k_RuntimeToggleProperty);
 
             serializedObject.Update();
-            m_ShowBuildSettings = EditorGUILayout.Foldout(m_ShowBuildSettings, k_ShowBuildSettingsLabel);
+            m_ShowBuildSettings = EditorGUILayout.Foldout(
+                m_ShowBuildSettings,
+                k_ShowBuildSettingsLabel
+            );
             if (m_ShowBuildSettings)
             {
                 EditorGUI.indentLevel++;
@@ -46,7 +50,10 @@ namespace Samples
 
             EditorGUILayout.Space();
 
-            m_ShowRuntimeSettings = EditorGUILayout.Foldout(m_ShowRuntimeSettings, k_ShowRuntimeSettingsLabel);
+            m_ShowRuntimeSettings = EditorGUILayout.Foldout(
+                m_ShowRuntimeSettings,
+                k_ShowRuntimeSettingsLabel
+            );
             if (m_ShowRuntimeSettings)
             {
                 EditorGUI.indentLevel++;
